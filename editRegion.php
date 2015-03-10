@@ -26,7 +26,7 @@ $gateway->updateRegion($regionId, $region, $managerName, $phoneNumber, $email);
 //'</pre>';
     
 
-header('Location: home.php');
+header('Location: regionTable.php');
 
 
 

@@ -19,6 +19,7 @@ $statement = $gateway->getStores();
     </head>
     <body>
         <?php require 'toolbar.php' ?>
+        <?php require 'menu.php' ?>
         <?php
         if (isset($message)) {
             echo '<p>'.$message.'</p>';

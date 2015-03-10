@@ -1,3 +1,4 @@
+<html> 
 <?php
 $session_id = session_id();
 if ($session_id == "") {
@@ -11,5 +12,4 @@ else {
     echo '<p><a href="index.php">Home</a></p>';
     echo '<p><a href="login.php">Login</a></p>';
 }
-
 

@@ -21,7 +21,7 @@ $email= $_POST['email'];
 
 $id = $gateway->insertRegion($region, $managerName, $phoneNumber, $email);
 
-header('Location: home.php');
+header('Location: regionTable.php');
 
 
 

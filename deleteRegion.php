@@ -20,7 +20,7 @@ $gateway = new RegionTableGateway($connection);
 
 $gateway->deleteRegion($regionId);
 
-header("Location: home.php");
+header("Location: regionTable.php");
 ?>
 
 

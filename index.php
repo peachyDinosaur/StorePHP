@@ -25,6 +25,7 @@ $statement = $gateway->getStores();
     </head>
     <body>
         <?php require 'toolbar.php' ?>
+        <?php require 'menu.php' ?>
         <?php 
         if (isset($message)) {
             echo '<p>'.$message.'</p>';
@@ -61,7 +62,7 @@ $statement = $gateway->getStores();
                                     <input type="button"
                                    value="Home"
                                    name="Home"                                   
-                                   onclick="document.location.href = 'regiontest.php'"
+                                   onclick="document.location.href = 'regionTable.php'"
                                    />
        
     </body>
