@@ -16,8 +16,12 @@ $gateway = new StoreTableGateway($connection);
 $address = $_POST['address'];
 $manager = $_POST['manager'];
 $phoneNumber= $_POST['phoneNumber'];
+$regionId   = filter_input(INPUT_POST, 'regionId',  FILTER_SANITIZE_NUMBER_INT);
+if ($regionId == -1) {
+    $regionId = NULL;
+}
 
-$id = $gateway->insertStore($address, $manager, $phoneNumber);
+$id = $gateway->insertStore($address, $manager, $phoneNumber, $regionId);
 
 header('Location: home.php');
 

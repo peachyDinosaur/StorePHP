@@ -1,10 +1,16 @@
 <?php
+require_once 'Connection.php';
+require_once 'RegionTableGateway.php';
 $id = session_id();
 if ($id == "") {
     session_start();
 }
-
 require 'ensureUserLoggedIn.php';
+
+$connection = Connection::getInstance();
+$regionGateway = new RegionTableGateway($connection);
+
+$regions = $regionGateway->getRegions();
 ?>
 <!DOCTYPE html>
 <html>
@@ -64,6 +70,23 @@ require 'ensureUserLoggedIn.php';
                             </span>
                         </td>
                     </tr>
+                    <tr>
+                        <td>Region</td>
+                        <td>
+                            <select name="regionId"
+                                <option value="-1">No manager</option>
+                                <?php
+                                $r = $regions->fetch(PDO::FETCH_ASSOC);
+                                while($r){
+                                    echo '<option value="' .$r['regionId']. '">' .$r['region'].'</option>';
+                                    $r = $regions->fetch(PDO::FETCH_ASSOC);
+                                }
+                                ?>
+                            </select>
+                                
+                                   
+                        </td>
+                    </tr>                    
                     <tr>
                         <td></td>
                         <td>

@@ -42,16 +42,17 @@ class StoreTableGateway {
         return $statement;
     }
 
-    public function insertStore($address, $manager, $phoneNumber ) {
+    public function insertStore($address, $manager, $phoneNumber, $regionId ) {
         $sqlQuery = "INSERT INTO stores " .
-                "(address, manager, phoneNumber) " .
-                "VALUES (:address, :manager, :phoneNumber)";
+                "(address, manager, phoneNumber, regionId) " .
+                "VALUES (:address, :manager, :phoneNumber, :regionId)";
 
         $statement = $this->connection->prepare($sqlQuery);
         $params = array(
             "address" => $address,
             "manager" => $manager,
-            "phoneNumber" => $phoneNumber
+            "phoneNumber" => $phoneNumber,
+            "regionId" => $regionId
         );
 
         $status = $statement->execute($params);
