@@ -1,9 +1,7 @@
 <?php
-require_once 'Store.php';
 require_once 'Connection.php';
 require_once 'StoreTableGateway.php';
-require_once 'Region.php';
-require_once 'RegionTableGateway.php';
+
 
 $id = session_id();
 if ($id == "") {
@@ -35,10 +33,10 @@ $statement = $gateway->getStores();
             <thead>
                 <tr>
                     <th>Store Id</th>
-                    <th>Region Id</th>
                     <th>Address</th>
                     <th>Manager</th>
                     <th>Phone Number</th>
+                    <th>Region</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,10 +44,10 @@ $statement = $gateway->getStores();
                 $row = $statement->fetch(PDO::FETCH_ASSOC);
                 while ($row) {      
                     echo '<td>' . $row['storeId'] . '</td>';
-                    echo '<td>' . $row['regionId'] . '</td>';
                     echo '<td>' . $row['address'] . '</td>';
                     echo '<td>' . $row['manager'] . '</td>';
                     echo '<td>' . $row['phoneNumber'] . '</td>';
+                    echo '<td>' . $row['region'] . '</td>';
                     echo '<td>';
                     echo '</tr>';
                     

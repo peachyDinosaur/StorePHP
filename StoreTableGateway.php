@@ -10,7 +10,8 @@ class StoreTableGateway {
 
     public function getStores() {
         // execute a query to get all stores
-        $sqlQuery = "SELECT * FROM stores";
+        $sqlQuery = "SELECT s.*, r.region FROM stores s
+                     LEFT JOIN region r ON r.`regionId` = s.`regionId`";
 
         $statement = $this->connection->prepare($sqlQuery);
         $status = $statement->execute();

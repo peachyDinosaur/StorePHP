@@ -1,5 +1,4 @@
 <?php
-require_once 'Store.php';
 require_once 'Connection.php';
 require_once 'StoreTableGateway.php';
 
@@ -29,11 +28,12 @@ $statement = $gateway->getStores();
             <thead>
                 <tr>
                     <th>Store Id</th>
-                    <th>Region Id</th>
                     <th>Address</th>
                     <th>Manager</th>
                     <th>Phone Number</th>
+                    <th>Region</th>
                     <th>Actions</th>
+                    
                 </tr>
             </thead>
             <tbody>
@@ -43,10 +43,10 @@ $statement = $gateway->getStores();
 
                     
                     echo '<td>' . $row['storeId'] . '</td>';
-                    echo '<td>' . $row['regionId'] . '</td>';
                     echo '<td>' . $row['address'] . '</td>';
                     echo '<td>' . $row['manager'] . '</td>';
                     echo '<td>' . $row['phoneNumber'] . '</td>';
+                    echo '<td>' . $row['region'] . '</td>';
                     echo '<td>'
                     . '<a href="viewStore.php?id='.$row['storeId'].'">View</a> '
                     . '<a href="editStoreForm.php?id='.$row['storeId'].'">Edit</a> '

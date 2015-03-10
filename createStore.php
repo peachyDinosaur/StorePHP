@@ -1,5 +1,4 @@
 <?php
-require_once 'Store.php';
 require_once 'Connection.php';
 require_once 'StoreTableGateway.php';
 
