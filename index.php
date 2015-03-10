@@ -2,6 +2,8 @@
 require_once 'Store.php';
 require_once 'Connection.php';
 require_once 'StoreTableGateway.php';
+require_once 'Region.php';
+require_once 'RegionTableGateway.php';
 
 $id = session_id();
 if ($id == "") {
@@ -12,6 +14,8 @@ $connection = Connection::getInstance();
 $gateway = new StoreTableGateway($connection);
 
 $statement = $gateway->getStores();
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,6 +58,12 @@ $statement = $gateway->getStores();
                 ?>
             </tbody>
         </table>
+                                    <input type="button"
+                                   value="Home"
+                                   name="Home"                                   
+                                   onclick="document.location.href = 'regiontest.php'"
+                                   />
+       
     </body>
 </html>
 
