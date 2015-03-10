@@ -73,8 +73,8 @@ $regions = $regionGateway->getRegions();
                     <tr>
                         <td>Region</td>
                         <td>
-                            <select name="regionId"
-                                <option value="-1">No manager</option>
+                            <select name="regionId">
+                                <option value="-1">No Region</option>
                                 <?php
                                 $r = $regions->fetch(PDO::FETCH_ASSOC);
                                 while($r){

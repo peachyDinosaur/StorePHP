@@ -1,6 +1,7 @@
 <?php
 require_once 'Connection.php';
 require_once 'StoreTableGateway.php';
+require_once 'RegionTableGateway.php';
 
 $id = session_id();
 if ($id == "") {
@@ -9,6 +10,7 @@ if ($id == "") {
 
 require 'ensureUserLoggedIn.php';
 
+
 if (!isset($_GET) || !isset($_GET['id'])) {
     die('Invalid request');
 }
@@ -16,11 +18,14 @@ $storeId = $_GET['id'];
 
 $connection = Connection::getInstance();
 $gateway = new StoreTableGateway($connection);
+$regionGateway = new RegionTableGateway($connection);
+
 
 $statement = $gateway->getStoreById($storeId);
 if ($statement->rowCount() !== 1) {
     die("Illegal request");
 }
+$regions = $regionGateway->getRegions();
 $row = $statement->fetch(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
@@ -114,6 +119,27 @@ $row = $statement->fetch(PDO::FETCH_ASSOC);
                             </span>
                         </td>
                     </tr>
+                    <tr>
+                        <td>Region</td>
+                        <td>
+                            <select name="regionId">
+                                <option value="-1">No Region</option>
+                                <?php
+                                $r = $regions->fetch(PDO::FETCH_ASSOC);
+                                while($r){
+                                    $selected ="";
+                                    if($r['regionId'] == $store[regionId]){
+                                        $selected = "selected";
+                                    }
+                                    echo '<option value="' .$r['regionId'] . '" ' . $selected . '>' .$r['region'].'</option>';
+                                    $r = $regions->fetch(PDO::FETCH_ASSOC);
+                                }
+                                ?>
+                            </select>
+                                
+                                   
+                        </td>
+                    </tr>                     
                     <tr>
                     <tr>
                         <td></td>
