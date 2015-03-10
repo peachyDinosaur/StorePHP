@@ -87,7 +87,7 @@ class RegionTableGateway {
                 "UPDATE region SET " .
                 "region = :region, " .
                 "managerName = :managerName, " .
-                "phoneNumber = :phoneNumber " .
+                "phoneNumber = :phoneNumber, " .
                 "email = :email " .
                 "WHERE regionId = :regionId";
 
@@ -99,6 +99,7 @@ class RegionTableGateway {
             "phoneNumber" => $phoneNumber,
             "email" => $email    
         );
+
 
         $status = $statement->execute($params);
 
